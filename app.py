@@ -7,11 +7,12 @@ app = Flask(__name__)
 CORS(app)
 
 APIFY_TOKEN = 'apify_api_kQrZb7l2RqdTg7aQCBTLc7WQZCt2VB3SqN8n'
-ACTOR_ID = 'drobnikj~instagram-profile-scraper'
+ACTOR_ID = 'apify/instagram-scraper'
 
 @app.route("/analyze/<username>")
 def analyze(username):
     try:
+        # Lanzar el actor válido
         run_url = f"https://api.apify.com/v2/acts/{ACTOR_ID}/runs?token={APIFY_TOKEN}&memory=1024&timeout=300"
         input_data = {
             "usernames": [username],

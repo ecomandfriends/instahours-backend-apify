@@ -1,16 +1,27 @@
-# InstaHours Backend (Debug con Apify)
+# InstaHours Backend (Final con actor válido de Apify)
 
-Este backend usa Apify y añade `print()` para depurar la respuesta de la API.
+Este backend utiliza el actor público y actualizado `apify/instagram-scraper`.
 
-- Verás la respuesta completa del intento de lanzar el actor en los logs de Render.
-- Si no se puede extraer `run_id`, devuelve el JSON original para ayudarte a depurar.
+### 🚀 Instrucciones
 
-### Build
+1. Conecta este backend en Render como Web Service.
+2. Verifica que el token de Apify es válido.
+3. Usa el endpoint:
+
+```
+/analyze/USERNAME
+```
+
+y obtendrás la frecuencia por hora de las últimas publicaciones de la cuenta indicada.
+
+### ⚙️ Comandos Render
+
+**Build Command:**
 ```
 pip install -r requirements.txt
 ```
 
-### Start
+**Start Command:**
 ```
 python app.py
 ```
