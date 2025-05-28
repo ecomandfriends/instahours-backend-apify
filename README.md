@@ -1,27 +1,16 @@
-# InstaHours Backend (Final con actor válido de Apify)
+# InstaHours Backend (versión blindada)
 
-Este backend utiliza el actor público y actualizado `apify/instagram-scraper`.
+Versión definitiva con manejo de errores mejorado y protección contra cuelgues.
 
-### 🚀 Instrucciones
+## Características:
+- Captura errores de red (Apify caído, token inválido, etc).
+- Retorna mensajes útiles y controlados.
+- Imprime en logs cada paso clave para ver en Render.
 
-1. Conecta este backend en Render como Web Service.
-2. Verifica que el token de Apify es válido.
-3. Usa el endpoint:
+## Cómo usar:
+- Subir a GitHub
+- Crear Web Service en Render
+- Build: pip install -r requirements.txt
+- Start: python app.py
 
-```
-/analyze/USERNAME
-```
-
-y obtendrás la frecuencia por hora de las últimas publicaciones de la cuenta indicada.
-
-### ⚙️ Comandos Render
-
-**Build Command:**
-```
-pip install -r requirements.txt
-```
-
-**Start Command:**
-```
-python app.py
-```
+Luego abre /analyze/{usuario} para ver el resultado.
