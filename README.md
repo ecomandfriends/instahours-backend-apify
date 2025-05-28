@@ -1,26 +1,16 @@
-# InstaHours Backend (Apify version)
+# InstaHours Backend (Debug con Apify)
 
-Este backend utiliza Apify para obtener información pública de cuentas de Instagram sin bloqueos.
+Este backend usa Apify y añade `print()` para depurar la respuesta de la API.
 
-## 🚀 Instrucciones
+- Verás la respuesta completa del intento de lanzar el actor en los logs de Render.
+- Si no se puede extraer `run_id`, devuelve el JSON original para ayudarte a depurar.
 
-1. Conecta este backend a Render.
-2. Se usa el actor `drobnikj~instagram-profile-scraper`.
-3. El token ya está integrado, puedes probar directamente.
-
-### 📦 Build Command
+### Build
 ```
 pip install -r requirements.txt
 ```
 
-### ▶️ Start Command
+### Start
 ```
 python app.py
 ```
-
-### 🔗 Endpoint de ejemplo
-```
-/analyze/kyliejenner
-```
-
-Retorna un JSON con los horarios más frecuentes de publicación.

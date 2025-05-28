@@ -12,14 +12,19 @@ ACTOR_ID = 'drobnikj~instagram-profile-scraper'
 @app.route("/analyze/<username>")
 def analyze(username):
     try:
-        # Lanzar actor directamente
         run_url = f"https://api.apify.com/v2/acts/{ACTOR_ID}/runs?token={APIFY_TOKEN}&memory=1024&timeout=300"
         input_data = {
             "usernames": [username],
             "resultsLimit": 30,
             "includePosts": True
         }
+
         run = requests.post(run_url, json={"input": input_data}).json()
+        print("🔍 RESPUESTA DEL RUN:", run)
+
+        if "id" not in run:
+            return jsonify({"error": "No se pudo lanzar el actor. Ver logs para más detalles.", "raw": run}), 400
+
         run_id = run["id"]
 
         # Esperar a que termine
@@ -29,20 +34,16 @@ def analyze(username):
             if status["status"] == "SUCCEEDED":
                 break
 
-        # Obtener resultados
         dataset_id = status["defaultDatasetId"]
         items_url = f"https://api.apify.com/v2/datasets/{dataset_id}/items?format=json"
         posts = requests.get(items_url).json()[0]["posts"]
 
-        # Extraer horas
         hours = [int(post["takenAtLocal"].split("T")[1].split(":")[0]) for post in posts if "takenAtLocal" in post]
-
         result = {f"{h}:00": hours.count(h) for h in range(24)}
         labels = list(result.keys())
         values = list(result.values())
 
         return jsonify({"labels": labels, "values": values})
-
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
