@@ -1,16 +1,26 @@
-# InstaHours Backend (versión blindada)
+# InstaHours Backend (Task personalizado en Apify)
 
-Versión definitiva con manejo de errores mejorado y protección contra cuelgues.
-
-## Características:
-- Captura errores de red (Apify caído, token inválido, etc).
-- Retorna mensajes útiles y controlados.
-- Imprime en logs cada paso clave para ver en Render.
+Este backend usa el Task ID `ecomandfriends~toni-instagram-scraper` desde tu cuenta de Apify.
 
 ## Cómo usar:
-- Subir a GitHub
-- Crear Web Service en Render
-- Build: pip install -r requirements.txt
-- Start: python app.py
+1. Asegúrate de tener configurado tu task en Apify Console.
+2. Subir este proyecto a GitHub.
+3. Conectar en Render como Web Service.
 
-Luego abre /analyze/{usuario} para ver el resultado.
+## Comandos Render
+
+**Build:**
+```
+pip install -r requirements.txt
+```
+
+**Start:**
+```
+python app.py
+```
+
+Luego accede a:
+```
+/analyze/USERNAME
+```
+para obtener las horas más comunes de publicación.
